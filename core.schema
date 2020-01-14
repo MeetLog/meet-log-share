@@ -1,5 +1,19 @@
-type Mutation {
+type User{
+	id: ID
+	name: String
+	password: String
+	nfcIdm: String
+	iconUrl: String
 }
 
-type Query {
+type Query{
+	login(
+		name: String
+		encriptedPassword: String
+		nfcIdm: String
+		iconUrl: String
+	): User
+}
+schema{
+	query: Query
 }
