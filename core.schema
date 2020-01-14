@@ -8,7 +8,7 @@ type User{
 type Query{
 	login(
 		name: String
-		encriptedPassword: String
+		encryptedPassword: String
 		nfcIdm: String
 		iconUrl: String
 	): User
