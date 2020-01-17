@@ -7,12 +7,20 @@ type User{
 
 type Query{
 	login(
-		name: String
-		encriptedPassword: String
-		nfcIdm: String
-		iconUrl: String
+		id: String
+		password: String
 	): User
 }
+
+type Mutation{
+	register(
+		name: String
+		password: String
+		nfcIdm: String
+		iconUrl: String
+	): ID
+}
 schema{
-	query: Query
+	query: Query,
+	mutation: Mutation
 }
