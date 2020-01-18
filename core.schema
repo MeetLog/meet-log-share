@@ -2,7 +2,7 @@
 ログインしているユーザー
 """
 type User{
-	id: String!
+	id: ID!
 	name: String!
 	nfcIdm: String!
 	iconUrl: String
