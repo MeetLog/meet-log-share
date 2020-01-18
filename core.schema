@@ -35,6 +35,10 @@ type Query{
 		id: String!
 		password: String!
 	): User
+	getSession(
+		myId: String
+		friendsId: String
+	): MeetSession
 }
 
 """
@@ -66,6 +70,10 @@ type Mutation{
 		accountType: String
 		accountId: String
 	): Account
+	postLog(
+		sessionId: String!
+		images: [String]
+	): Log
 }
 
 """
@@ -77,6 +85,12 @@ type MeetSession{
 	相手のアカウント<br>
 	"""
 	accounts: [Account]
+}
+
+type Log{
+	imageUrl: [String]
+	comments: String
+	id: ID
 }
 schema{
 	query: Query,
