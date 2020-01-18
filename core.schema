@@ -39,6 +39,9 @@ type Query{
 		myId: String
 		friendsId: String
 	): MeetSession
+	getLogs(
+		sessionId: String
+	): [Log]
 }
 
 """
