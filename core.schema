@@ -1,18 +1,101 @@
+"""
+ログインしているユーザー
+"""
 type User{
-	id: ID
-	name: String
-	nfcIdm: String
+	id: ID!
+	name: String!
+	nfcIdm: String!
 	iconUrl: String
+	accounts: [Account]
 }
 
+type Account{
+	"""
+	ex. twitter/instagram
+	"""
+	snsType: String
+	"""
+	SNSのid
+	"""
+	snsId: String
+	"""
+	内部処理用のID<br>これを使ってアカウントを特定する<br>
+	"""
+	id: ID
+}
+
+"""
+情報取得系
+"""
 type Query{
+	"""
+	idで指定したIDのユーザーにログインする<br>registerの返り値でIDが帰ってくるのでこれを保存してください。
+	"""
 	login(
-		name: String
-		encryptedPassword: String
+		id: String!
+		password: String!
+	): User
+	getSession(
+		myId: String
+		friendsId: String
+	): MeetSession
+	getLogs(
+		sessionId: String
+	): [Log]
+}
+
+"""
+情報更新系
+"""
+type Mutation{
+	"""
+	ユーザー作成<br>戻り値としてIDが帰ってくるのでこれでユーザーを特定します。
+	"""
+	register(
+		name: String!
+		password: String!
 		nfcIdm: String
 		iconUrl: String
+	): ID!
+	"""
+	UserからAccountを削除する<br>
+	"""
+	removeAccount(
+		userId: String!
+		accountId: String!
 	): User
+	connectAccount(
+		myId: String!
+		friendsId: String!
+	): MeetSession
+	addAccount(
+		userId: String
+		accountType: String
+		accountId: String
+	): Account
+	postLog(
+		sessionId: String!
+		images: [String]
+	): Log
+}
+
+"""
+エンカを指すtype<br>
+"""
+type MeetSession{
+	id: ID
+	"""
+	相手のアカウント<br>
+	"""
+	accounts: [Account]
+}
+
+type Log{
+	imageUrl: [String]
+	comments: String
+	id: ID
 }
 schema{
-	query: Query
+	query: Query,
+	mutation: Mutation
 }
