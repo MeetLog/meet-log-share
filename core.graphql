@@ -38,7 +38,7 @@ type Query{
 	getSession(
 		myId: String
 		friendsId: String
-	): MeetSession
+	): FriendSession
 	getLogs(
 		sessionId: String
 	): [Log]
@@ -67,7 +67,7 @@ type Mutation{
 	connectAccount(
 		myId: String!
 		friendsId: String!
-	): MeetSession
+	): FriendSession
 	addAccount(
 		userId: String
 		accountType: String
@@ -82,7 +82,7 @@ type Mutation{
 """
 エンカを指すtype<br>
 """
-type MeetSession{
+type FriendSession{
 	id: ID
 	"""
 	相手のアカウント<br>
