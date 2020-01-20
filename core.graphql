@@ -62,6 +62,9 @@ type Mutation{
 		userId: String!
 		accountId: String!
 	): User
+	createGroupSession(
+		myId: String
+	): MeetSession
 	connectAccount(
 		myId: String!
 		friendsId: String!
