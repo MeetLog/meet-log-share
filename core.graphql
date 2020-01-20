@@ -88,6 +88,15 @@ type FriendSession{
 	相手のアカウント<br>
 	"""
 	accounts: [Account]
+	session: MeetSession!
+}
+
+type MeetSession{
+	id: ID
+	participants: [User]
+	date: String
+	place: String!
+	logs: [Log]
 }
 
 type Log{
