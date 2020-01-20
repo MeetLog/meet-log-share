@@ -78,6 +78,11 @@ type Mutation{
 		sessionId: String!
 		images: [String]
 	): Log
+	leaveMeetSession(
+		meetSessionId: String
+		myId: String
+		endTime: String
+	): Boolean
 }
 
 """
