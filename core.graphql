@@ -38,10 +38,8 @@ type Query{
 	getSession(
 		myId: String
 		friendsId: String
-	): MeetSession
-	getLogs(
-		sessionId: String
-	): [Log]
+		meetSessionId: String
+	): FriendSession
 }
 
 """
@@ -64,10 +62,13 @@ type Mutation{
 		userId: String!
 		accountId: String!
 	): User
+	createGroupSession(
+		myId: String
+	): MeetSession
 	connectAccount(
 		myId: String!
 		friendsId: String!
-	): MeetSession
+	): FriendSession
 	addAccount(
 		userId: String
 		accountType: String
@@ -77,17 +78,31 @@ type Mutation{
 		sessionId: String!
 		images: [String]
 	): Log
+	leaveMeetSession(
+		meetSessionId: String
+		myId: String
+		endTime: String
+	): Boolean
 }
 
 """
 エンカを指すtype<br>
 """
-type MeetSession{
+type FriendSession{
 	id: ID
 	"""
 	相手のアカウント<br>
 	"""
 	accounts: [Account]
+	session: MeetSession!
+}
+
+type MeetSession{
+	id: ID
+	participants: [User]
+	date: String
+	place: String!
+	logs: [Log]
 }
 
 type Log{
