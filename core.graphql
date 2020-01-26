@@ -34,9 +34,9 @@ type Query{
 	login(
 		id: String!
 		password: String!
-	): User
+	): String
 	getSession(
-		myId: String
+		token: String
 		friendsId: String
 		meetSessionId: String
 	): FriendSession
@@ -59,18 +59,18 @@ type Mutation{
 	UserからAccountを削除する<br>
 	"""
 	removeAccount(
-		userId: String!
+		token: String!
 		accountId: String!
 	): User
 	createGroupSession(
-		myId: String
+		token: String
 	): MeetSession
 	connectAccount(
-		myId: String!
+		token: String!
 		friendsId: String!
 	): FriendSession
 	addAccount(
-		userId: String
+		token: String
 		accountType: String
 		accountId: String
 	): Account
@@ -80,7 +80,7 @@ type Mutation{
 	): Log
 	leaveMeetSession(
 		meetSessionId: String
-		myId: String
+		token: String
 		endTime: String
 	): Boolean
 }
