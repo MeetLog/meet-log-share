@@ -28,13 +28,6 @@ type Account{
 情報取得系
 """
 type Query{
-	"""
-	idで指定したIDのユーザーにログインする<br>registerの返り値でIDが帰ってくるのでこれを保存してください。
-	"""
-	login(
-		id: String!
-		password: String!
-	): User
 	getSession(
 		myId: String
 		friendsId: String
@@ -46,15 +39,6 @@ type Query{
 情報更新系
 """
 type Mutation{
-	"""
-	ユーザー作成<br>戻り値としてIDが帰ってくるのでこれでユーザーを特定します。
-	"""
-	register(
-		name: String!
-		password: String!
-		nfcIdm: String
-		iconUrl: String
-	): ID!
 	"""
 	UserからAccountを削除する<br>
 	"""
