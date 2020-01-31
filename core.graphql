@@ -63,7 +63,8 @@ type Mutation{
 	): Account
 	postLog(
 		sessionId: String!
-		images: [String]
+		comments: String,
+		images: [String!]
 	): Log
 	leaveMeetSession(
 		meetSessionId: String
