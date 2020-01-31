@@ -53,7 +53,8 @@ type Mutation{
 	): MeetSession
 	connectAccount(
 		myId: String!
-		friendsId: String!
+		friendsId: String!,
+		meetSession: String!
 	): FriendSession
 	addAccount(
 		userId: String
