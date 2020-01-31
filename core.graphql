@@ -58,8 +58,8 @@ type Mutation{
 	): FriendSession
 	addAccount(
 		userId: String
-		accountType: String
-		accountId: String
+		snsType: String
+		snsId: String
 	): Account
 	postLog(
 		sessionId: String!
