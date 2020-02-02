@@ -57,9 +57,9 @@ type Mutation{
 		meetSession: String!
 	): FriendSession
 	addAccount(
-		userId: String
-		snsType: String
-		snsId: String
+		userId: String!
+		snsType: String!
+		snsId: String!
 	): Account
 	postLog(
 		sessionId: String!
