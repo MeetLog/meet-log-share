@@ -47,13 +47,13 @@ type Mutation{
 		accountId: String!
 	): User
 	createGroupSession(
-		myId: String!,
-		date: String!,
+		myId: String!
+		date: String!
 		place: String
 	): MeetSession
 	connectAccount(
 		myId: String!
-		friendsId: String!,
+		friendsId: String!
 		meetSession: String!
 	): FriendSession
 	addAccount(
@@ -63,7 +63,7 @@ type Mutation{
 	): Account
 	postLog(
 		sessionId: String!
-		comments: String,
+		comments: String
 		images: [String!]
 	): Log
 	leaveMeetSession(
